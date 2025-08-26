@@ -12,7 +12,7 @@ function ThemeToggleBtn({ theme, setTheme }) {
   }, [theme]);
   return (
     <>
-      <button>
+      <button className="cursor-pointer">
         {theme === "dark" ? (
           <img
             onClick={() => {

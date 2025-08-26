@@ -1,13 +1,39 @@
 import { company_logos } from "../assets/assets";
+import { motion } from "motion/react";
 
 function TrustedBy() {
   return (
-    <div className="flex flex-col items-center px-4 sm:px-12 lg:px-24 xl:px-40 gap-10 text-gray-600  dark:text-white/80 text-center">
-      <h3 className="font-semibold">Trusted by leading companies</h3>
-      <div className="flex items-center justify-center flex-wrap gap-10 m-4">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="flex flex-col items-center px-4 sm:px-12 lg:px-24 xl:px-40 gap-10 text-gray-600  dark:text-white/80 text-center"
+    >
+      <motion.h3
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="font-semibold"
+      >
+        Trusted by leading companies
+      </motion.h3>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        transition={{ staggerChildren: 0.1 }}
+        viewport={{ once: true }}
+        className="flex items-center justify-center flex-wrap gap-10 m-4"
+      >
         {company_logos.map((logo, index) => {
           return (
-            <img
+            <motion.img
+              variants={{
+                hidden: { opacity: 0, y: 0 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.5 }}
               src={logo}
               key={index}
               alt=""
@@ -15,8 +41,8 @@ function TrustedBy() {
             />
           );
         })}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
